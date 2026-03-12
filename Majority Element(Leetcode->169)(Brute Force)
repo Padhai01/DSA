@@ -1,0 +1,25 @@
+# Approach 1 ->Problem Submitted
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int n=nums.size();
+        // sort(nums.begin(),nums.end());
+        for(int val:nums)
+        {
+            int count=0;
+            for(int el:nums)
+            {
+                if(el==val)
+                    count++;
+            }
+            if(count>n/2)
+            {
+                return val;
+            }
+        }
+        return -1;
+    }
+};
+
+# TC -> O(n^2)
