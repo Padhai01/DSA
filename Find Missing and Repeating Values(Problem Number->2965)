@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
+        unordered_set<int> s;
+        vector<int> result;
+        int n=grid.size();
+        int expSum=0,actSum=0,a,b;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                actSum+=grid[i][j];
+
+                if(s.find(grid[i][j])!=s.end()){
+                    a=grid[i][j];
+                    result.push_back(a);
+                }
+                s.insert(grid[i][j]);
+            }
+        }
+        expSum=(n*n)*(n*n+1)/2;
+        b=expSum+a-actSum;
+        result.push_back(b);
+
+        return result;
+    }
+};
+
+# TC -> O(n^2)
