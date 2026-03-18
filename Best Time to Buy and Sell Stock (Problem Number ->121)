@@ -1,0 +1,22 @@
+# c++ sol
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n=prices.size();
+        int bestBuy=prices[0];
+        int mp=0;
+        for(int i=1;i<n;i++)
+        {
+             if(bestBuy<prices[i])
+            {
+                if(mp<(prices[i]-bestBuy))
+                    mp=prices[i]-bestBuy;
+            }
+
+            if(bestBuy>prices[i])
+                bestBuy=prices[i];
+        }
+        return mp;
+    }
+};
