@@ -1,0 +1,11 @@
+# Approach 1
+
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+    }
+};
+
+# TC -> O(nlogn)
+# SC -> O(1)
