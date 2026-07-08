@@ -1,0 +1,33 @@
+class Solution {
+public:
+    void getSubsets(vector<int>& nums, vector<int>& ans, int i, vector<vector<int>>& getAllSub){
+        int n=nums.size();
+        if(i==n)
+        {
+            getAllSub.push_back({ans});
+
+            return;
+        }
+
+        ans.push_back(nums[i]);
+        getSubsets(nums,ans,i+1,getAllSub);
+
+        ans.pop_back();
+
+        int idx=i+1;
+        while(idx<n && nums[idx]==nums[idx-1])
+            idx++;
+
+        getSubsets(nums,ans,idx,getAllSub);
+    }
+
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        vector<int>ans;
+        vector<vector<int>>getAllSub;
+        sort(nums.begin(),nums.end());
+
+        getSubsets(nums,ans,0,getAllSub);
+
+        return getAllSub;
+    }
+};
