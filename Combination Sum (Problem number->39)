@@ -1,0 +1,32 @@
+class Solution {
+public:
+    set<vector<int>>s;
+    void CombinationSum(vector<int>& arr, int tar, int i, vector<int>& combi, vector<vector<int>>& ans, int n) {
+        if(i==n || tar<0)
+            return;
+
+        if(tar==0){
+            if(s.find(combi)==s.end())
+            {
+                ans.push_back({combi});
+                s.insert(combi);
+            }
+            return;
+        }
+
+        combi.push_back(arr[i]);
+        CombinationSum(arr,tar-arr[i],i+1,combi,ans,n);
+        CombinationSum(arr,tar-arr[i],i,combi,ans,n);
+        combi.pop_back();
+        CombinationSum(arr,tar,i+1,combi,ans,n);
+    }
+
+    vector<vector<int>> combinationSum(vector<int>& arr, int tar) {
+        int n=arr.size();
+        vector<int> combi;
+        vector<vector<int>> ans;
+        CombinationSum(arr,tar,0,combi,ans,n);
+
+        return ans;
+    }
+};
