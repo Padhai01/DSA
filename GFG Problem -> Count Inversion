@@ -1,0 +1,19 @@
+# Approach 1
+
+class Solution {
+  public:
+    int inversionCount(vector<int> &arr) {
+        // Code Here
+        int n=arr.size();
+        int c=0;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                if(i<j && arr[i]>arr[j])
+                    c++;
+            }
+        }
+        return c;
+    }
+};
