@@ -1,0 +1,27 @@
+class Solution {
+  public:
+    void quickSort(vector<int>& arr, int st, int end) {
+        // code here
+        if(st<end){
+            int pvI=partition(arr,st,end);
+            quickSort(arr,st,pvI-1);
+            quickSort(arr,pvI+1,end);
+        }
+    }
+
+  public:
+    int partition(vector<int>& arr, int st, int end) {
+        // code here
+        int idx=st-1,pivot=arr[end];
+        for(int i=st;i<end;i++)
+        {
+            if(arr[i]<=pivot){
+                idx++;
+                swap(arr[i],arr[idx]);
+            }
+        }
+        idx++;
+        swap(arr[end],arr[idx]);
+        return idx;
+    }
+};
